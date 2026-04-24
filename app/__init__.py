@@ -18,4 +18,7 @@ def create_app():
     from .routes.categorias import bp as categorias_bp
     app.register_blueprint(categorias_bp)
 
+    from .routes.productos import bp as productos_bp
+    app.register_blueprint(productos_bp)
+
     return app
