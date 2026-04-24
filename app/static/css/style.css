@@ -1,103 +1,220 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --indigo:    #4f46e5;
-  --indigo-sm: rgba(79, 70, 229, 0.10);
-  --slate-900: #0f172a;
-  --slate-50:  #f8fafc;
-  --verde:     #10b981;
-  --ambar:     #f59e0b;
-  --rojo:      #ef4444;
+  --indigo:      #4f46e5;
+  --indigo-dark: #4338ca;
+  --slate-900:   #0f172a;
+  --slate-800:   #1e293b;
+  --slate-50:    #f8fafc;
 }
 
-/* ── Base ─────────────────────────────────────── */
+/* ── Reset / base ─────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--slate-50);
   color: #1e293b;
+  margin: 0;
 }
 
-/* ── Navbar ───────────────────────────────────── */
+/* ── Layout ───────────────────────────────────── */
 
-.navbar {
-  background-color: var(--slate-900) !important;
-  border-bottom: 3px solid var(--indigo);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+.wrapper {
+  display: flex;
+  min-height: 100vh;
 }
 
-.navbar-brand {
+/* ── Sidebar ──────────────────────────────────── */
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: var(--slate-900);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  border-right: 1px solid rgba(255,255,255,.05);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.4rem 1.25rem 1.2rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: -.3px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  text-decoration: none;
 }
 
-.nav-link {
+.sidebar-brand:hover { color: #fff; }
+
+.brand-icon {
+  width: 32px; height: 32px;
+  background: var(--indigo);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: .9rem .65rem;
+}
+
+.sidebar-section-label {
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .9px;
+  color: rgba(255,255,255,.25);
+  padding: .8rem .6rem .2rem;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  color: rgba(255,255,255,.55);
+  padding: .55rem .85rem;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  font-size: .875rem;
   font-weight: 500;
-  font-size: .9rem;
-  opacity: .8;
-  transition: opacity .15s;
+  transition: color .15s, background .15s;
 }
 
-.nav-link:hover {
-  opacity: 1;
+.sidebar .nav-link i {
+  font-size: 1rem;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-/* ── Cards ────────────────────────────────────── */
+.sidebar .nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,.07);
+}
+
+.sidebar .nav-link.activo {
+  color: #fff;
+  background: var(--indigo);
+}
+
+/* ── Contenido principal ──────────────────────── */
+
+.main-content {
+  margin-left: 240px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content > main {
+  flex: 1;
+  padding: 2rem 2.25rem;
+}
+
+/* ── Top bar móvil ────────────────────────────── */
+
+.topbar-mobile {
+  display: none;
+  align-items: center;
+  padding: .75rem 1rem;
+  background: var(--slate-900);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  position: sticky;
+  top: 0;
+  z-index: 150;
+}
+
+/* ── Tarjetas KPI (Dashboard) ─────────────────── */
+
+.card-kpi {
+  border: none !important;
+  border-radius: 14px !important;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.13) !important;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card-kpi:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.18) !important;
+}
+
+.kpi-azul  { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important; }
+.kpi-verde { background: linear-gradient(135deg, #059669 0%, #0891b2 100%) !important; }
+.kpi-ambar { background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important; }
+.kpi-rojo  { background: linear-gradient(135deg, #dc2626 0%, #9f1239 100%) !important; }
+
+.kpi-icon {
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.kpi-label {
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: rgba(255,255,255,.75);
+  margin-bottom: 3px;
+}
+
+.kpi-valor {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  line-height: 1;
+  color: #fff;
+}
+
+/* ── Cards generales ──────────────────────────── */
 
 .card {
   border: none !important;
   border-radius: 12px !important;
   box-shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 14px rgba(0,0,0,.05) !important;
-  transition: box-shadow .2s, transform .2s;
-}
-
-.card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,.10), 0 8px 24px rgba(0,0,0,.06) !important;
-  transform: translateY(-1px);
 }
 
 .card-header {
+  background: #fff !important;
   border-bottom: 1px solid #f1f5f9 !important;
   border-radius: 12px 12px 0 0 !important;
-  font-size: .9rem;
-}
-
-/* Acento de color en las tarjetas de métricas */
-.metrica-azul   { border-left: 4px solid var(--indigo) !important; }
-.metrica-verde  { border-left: 4px solid var(--verde) !important; }
-.metrica-ambar  { border-left: 4px solid var(--ambar) !important; }
-.metrica-rojo   { border-left: 4px solid var(--rojo) !important; }
-
-.metrica-numero {
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: -.5px;
-  line-height: 1;
-}
-
-.metrica-label {
-  font-size: .78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  color: #64748b;
-  margin-bottom: 4px;
+  font-size: .875rem;
+  padding: .9rem 1.25rem;
 }
 
 /* ── Tablas ───────────────────────────────────── */
 
-.table > tbody > tr {
-  transition: background-color .12s;
-}
-
-.table > tbody > tr:hover > * {
-  background-color: var(--indigo-sm) !important;
-}
-
-.table thead th {
-  font-size: .8rem;
+.table > thead th {
+  font-size: .75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .4px;
+  white-space: nowrap;
+}
+
+.table > tbody > tr {
+  transition: background .1s;
+}
+
+.table > tbody > tr:hover > * {
+  background-color: rgba(79,70,229,.04) !important;
 }
 
 /* ── Botones ──────────────────────────────────── */
@@ -115,53 +232,64 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #4338ca !important;
-  border-color: #4338ca !important;
+  background-color: var(--indigo-dark) !important;
+  border-color: var(--indigo-dark) !important;
+  box-shadow: 0 4px 12px rgba(79,70,229,.35);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, .35);
 }
 
 /* ── Formularios ──────────────────────────────── */
 
-.form-control,
-.form-select {
+.form-control, .form-select {
   border-radius: 8px !important;
   border-color: #e2e8f0;
   font-size: .9rem;
+  padding: .5rem .85rem;
   transition: border-color .15s, box-shadow .15s;
 }
 
-.form-control:focus,
-.form-select:focus {
+.form-control:focus, .form-select:focus {
   border-color: var(--indigo) !important;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, .12) !important;
+  box-shadow: 0 0 0 3px rgba(79,70,229,.12) !important;
 }
 
 .form-label {
   font-size: .875rem;
+  font-weight: 500;
   color: #374151;
+  margin-bottom: .35rem;
 }
 
 /* ── Badges ───────────────────────────────────── */
 
 .badge {
   font-weight: 500;
-  letter-spacing: .2px;
   border-radius: 6px !important;
+  padding: .3em .6em;
 }
 
-/* ── Títulos de página ────────────────────────── */
+/* ── Títulos ──────────────────────────────────── */
 
 h2 {
   font-weight: 700;
   letter-spacing: -.4px;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
 }
 
-/* ── Alertas ──────────────────────────────────── */
+/* ── Alertas flash ────────────────────────────── */
 
 .alert {
   border: none !important;
   border-radius: 10px !important;
   font-size: .9rem;
+}
+
+/* ── Responsive ───────────────────────────────── */
+
+@media (max-width: 991px) {
+  .sidebar         { transform: translateX(-100%); transition: transform .25s; }
+  .sidebar.abierto { transform: translateX(0); }
+  .main-content    { margin-left: 0; }
+  .topbar-mobile   { display: flex; }
+  .main-content > main { padding: 1.25rem; }
 }

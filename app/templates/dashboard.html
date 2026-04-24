@@ -9,56 +9,48 @@
 <div class="row g-3 mb-4">
 
     <div class="col-sm-6 col-xl-3">
-        <div class="card metrica-azul h-100">
-            <div class="card-body d-flex align-items-center gap-3 py-3">
-                <div class="rounded-3 bg-primary bg-opacity-10 p-3">
-                    <i class="bi bi-box-seam fs-3 text-primary"></i>
-                </div>
+        <div class="card card-kpi kpi-azul h-100">
+            <div class="card-body d-flex align-items-center gap-3 p-4">
+                <div class="kpi-icon"><i class="bi bi-box-seam"></i></div>
                 <div>
-                    <div class="metrica-label">Total productos</div>
-                    <div class="metrica-numero">{{ resumen.total_productos }}</div>
+                    <div class="kpi-label">Total productos</div>
+                    <div class="kpi-valor">{{ resumen.total_productos }}</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-6 col-xl-3">
-        <div class="card metrica-verde h-100">
-            <div class="card-body d-flex align-items-center gap-3 py-3">
-                <div class="rounded-3 bg-success bg-opacity-10 p-3">
-                    <i class="bi bi-currency-dollar fs-3 text-success"></i>
-                </div>
+        <div class="card card-kpi kpi-verde h-100">
+            <div class="card-body d-flex align-items-center gap-3 p-4">
+                <div class="kpi-icon"><i class="bi bi-currency-dollar"></i></div>
                 <div>
-                    <div class="metrica-label">Valor inventario</div>
-                    <div class="metrica-numero">${{ '%.2f' % resumen.valor_inventario }}</div>
+                    <div class="kpi-label">Valor inventario</div>
+                    <div class="kpi-valor">${{ '%.2f' % resumen.valor_inventario }}</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-6 col-xl-3">
-        <div class="card metrica-ambar h-100">
-            <div class="card-body d-flex align-items-center gap-3 py-3">
-                <div class="rounded-3 bg-warning bg-opacity-10 p-3">
-                    <i class="bi bi-exclamation-triangle fs-3 text-warning"></i>
-                </div>
+        <div class="card card-kpi kpi-ambar h-100">
+            <div class="card-body d-flex align-items-center gap-3 p-4">
+                <div class="kpi-icon"><i class="bi bi-exclamation-triangle"></i></div>
                 <div>
-                    <div class="metrica-label">Bajo stock</div>
-                    <div class="metrica-numero">{{ resumen.bajo_stock }}</div>
+                    <div class="kpi-label">Bajo stock</div>
+                    <div class="kpi-valor">{{ resumen.bajo_stock }}</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-6 col-xl-3">
-        <div class="card metrica-rojo h-100">
-            <div class="card-body d-flex align-items-center gap-3 py-3">
-                <div class="rounded-3 bg-danger bg-opacity-10 p-3">
-                    <i class="bi bi-x-circle fs-3 text-danger"></i>
-                </div>
+        <div class="card card-kpi kpi-rojo h-100">
+            <div class="card-body d-flex align-items-center gap-3 p-4">
+                <div class="kpi-icon"><i class="bi bi-x-circle"></i></div>
                 <div>
-                    <div class="metrica-label">Sin stock</div>
-                    <div class="metrica-numero">{{ resumen.sin_stock }}</div>
+                    <div class="kpi-label">Sin stock</div>
+                    <div class="kpi-valor">{{ resumen.sin_stock }}</div>
                 </div>
             </div>
         </div>
