@@ -15,6 +15,9 @@ def create_app():
     # Cadena de conexión a la base de datos
     app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 
+    from .routes.main import bp as main_bp
+    app.register_blueprint(main_bp)
+
     from .routes.categorias import bp as categorias_bp
     app.register_blueprint(categorias_bp)
 
