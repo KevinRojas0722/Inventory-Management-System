@@ -1,0 +1,31 @@
+# Entorno virtual — nunca va al repositorio
+venv/
+env/
+.venv/
+
+# Variables de entorno — contienen credenciales
+.env
+.env.local
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Caché de pytest y coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
