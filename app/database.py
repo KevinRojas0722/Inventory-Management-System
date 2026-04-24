@@ -37,3 +37,23 @@ def ejecutar_comando(sql, params=None):
         filas_afectadas = cursor.rowcount
         conn.commit()
         return filas_afectadas
+
+
+def ejecutar_transaccion(operaciones):
+    """
+    Ejecuta una lista de (sql, params) en una sola transacción atómica.
+    Si cualquier operación falla, se hace rollback de todas.
+
+    operaciones: lista de tuplas [(sql, params), ...]
+    """
+    conn = get_connection()
+    try:
+        cursor = conn.cursor()
+        for sql, params in operaciones:
+            cursor.execute(sql, params or [])
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
